@@ -90,7 +90,8 @@ label-armor-class =
     .Superheavy = Superheavy
     .Shield = Shield
 
-loadscreen-loading = Drag to set a formation for units when attack-moving., Access your Promotions tab through the star button on the top right or the hotkey (default P)., The promotions counter on the top right displays your points and progress to earning them., Multiple production buildings can be cycled through using their categories' respective hotkeys.,Team Cash Sharing automatically redistributes resources among players.,Radiation will damage affected units regardless of player and resulting deaths do not count toward kills.
+#loadscreen-loading = Drag to set a formation for units when attack-moving., Access your Promotions tab through the star button on the top right or the hotkey (default P)., The promotions counter on the top right displays your points and progress to earning them., Multiple production buildings can be cycled through using their categories' respective hotkeys.,Team Cash Sharing automatically redistributes resources among players.,Radiation will damage affected units regardless of player and resulting deaths do not count toward kills.
+loadscreen-loading = Loading...
 
 ## ingame-observer.yaml, ingame-player.yaml
 label-mute-indicator = Audio Muted
