@@ -13,7 +13,7 @@
 	TerrainRenderer:
 	TerrainGeometryOverlay:
 	TerrainLighting:
-		Intensity: 0.66
+		Intensity: 1
 	ShroudRenderer:
 		# ShroudVariants: typea, typeb, typec, typed
 		# FogVariants: typea, typeb, typec, typed
