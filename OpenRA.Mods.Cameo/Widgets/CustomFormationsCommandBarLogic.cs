@@ -24,6 +24,18 @@ namespace OpenRA.Mods.Cameo.Widgets
 	/// <summary>Contains all functions that are unit-specific.</summary>
 	public class CustomFormationsCommandBarLogic : ChromeLogic
 	{
+		[FluentReference]
+		const string AttackMoveTooltip = "button-command-bar-attack-move.tooltip";
+
+		[FluentReference]
+		const string AttackMoveTooltipDesc = "button-command-bar-attack-move.tooltipdesc";
+
+		[FluentReference]
+		const string AttackMoveAsMoveTooltip = "button-command-bar-attack-move-as-move.tooltip";
+
+		[FluentReference]
+		const string AttackMoveAsMoveTooltipDesc = "button-command-bar-attack-move-as-move.tooltipdesc";
+
 		readonly World world;
 
 		int selectionHash;
@@ -60,8 +72,22 @@ namespace OpenRA.Mods.Cameo.Widgets
 			{
 				WidgetUtils.BindButtonIcon(attackMoveButton);
 
+				var attackMoveTooltip = FluentProvider.GetMessage(AttackMoveTooltip);
+				var attackMoveTooltipDesc = FluentProvider.GetMessage(AttackMoveTooltipDesc);
+				var attackMoveAsMoveTooltip = FluentProvider.GetMessage(AttackMoveAsMoveTooltip);
+				var attackMoveAsMoveTooltipDesc = FluentProvider.GetMessage(AttackMoveAsMoveTooltipDesc);
+
+				attackMoveButton.GetTooltipText = () => Game.Settings.Game.AttackMoveIsDefault
+					? attackMoveAsMoveTooltip
+					: attackMoveTooltip;
+				attackMoveButton.GetTooltipDesc = () => Game.Settings.Game.AttackMoveIsDefault
+					? attackMoveAsMoveTooltipDesc
+					: attackMoveTooltipDesc;
+
 				attackMoveButton.IsDisabled = () => { UpdateStateIfNecessary(); return attackMoveDisabled; };
-				attackMoveButton.IsHighlighted = () => world.OrderGenerator is CustomFormationsAttackMoveOrderGenerator;
+				attackMoveButton.IsHighlighted = () => Game.Settings.Game.AttackMoveIsDefault
+					? world.OrderGenerator is MoveOrderGenerator
+					: world.OrderGenerator is CustomFormationsAttackMoveOrderGenerator;
 
 				void Toggle(bool allowCancel)
 				{
@@ -70,6 +96,8 @@ namespace OpenRA.Mods.Cameo.Widgets
 						if (allowCancel)
 							world.CancelInputMode();
 					}
+					else if (Game.Settings.Game.AttackMoveIsDefault)
+						world.OrderGenerator = new MoveOrderGenerator();
 					else
 						world.OrderGenerator = new CustomFormationsAttackMoveOrderGenerator(selectedActors, Game.Settings.Game.MouseButtonPreference.Action);
 				}
