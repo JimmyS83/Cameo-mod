@@ -113,7 +113,7 @@ mkdir -p "${LAUNCHER_ASSEMBLY_DIR}/arm64"
 echo "APPL????" > "${LAUNCHER_CONTENTS_DIR}/PkgInfo"
 cp "${TEMPLATE_ROOT}/${ENGINE_DIRECTORY}/packaging/macos/Info.plist.in" "${LAUNCHER_CONTENTS_DIR}/Info.plist"
 
-modify_plist "{DEV_VERSION}" "${TAG}" "${LAUNCHER_CONTENTS_DIR}/Info.plist"
+modify_plist "playtest-20260426" "${TAG}" "${LAUNCHER_CONTENTS_DIR}/Info.plist"
 modify_plist "{FAQ_URL}" "${PACKAGING_FAQ_URL}" "${LAUNCHER_CONTENTS_DIR}/Info.plist"
 modify_plist "{MOD_ID}" "${MOD_ID}" "${LAUNCHER_CONTENTS_DIR}/Info.plist"
 modify_plist "{MINIMUM_SYSTEM_VERSION}" "10.11" "${LAUNCHER_CONTENTS_DIR}/Info.plist"
