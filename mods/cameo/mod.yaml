@@ -1,6 +1,6 @@
 Metadata:
 	Title: mod-title
-	Version: {DEV_VERSION}
+	Version: playtest-20260709
 	Website: https://www.moddb.com/mods/cameo
 	WebIcon32: https://raw.githubusercontent.com/Zeruel87/Cameo-mod/master/packaging/artwork/icon_32x32.png
 	WindowTitle: mod-windowtitle
@@ -98,7 +98,7 @@ FileSystem: DefaultFileSystem
 
 MapFolders:
 	cameo|maps: System
-	~^SupportDir|maps/cameo/{DEV_VERSION}: User
+	~^SupportDir|maps/cameo/playtest-20260709: User
 
 # Faction content packs — the Include order below defines the lobby faction
 # selector order (the lobby groups factions by Side and lists them in load
